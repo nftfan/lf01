@@ -170,6 +170,18 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         text-align: center;
         z-index: 1000;
+        animation: popupAnimation 1s ease-in-out forwards;
+    }
+
+    @keyframes popupAnimation {
+        0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
     }
 
     .popup img {
@@ -198,6 +210,25 @@
     .close-btn:hover {
         background: #e04e4e;
     }
+
+    .popup-message {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        margin-top: 10px;
+    }
+
+    .popup-link {
+        font-size: 18px;
+        font-weight: bold;
+        color: #007bff;
+        margin-top: 10px;
+        text-decoration: none;
+    }
+
+    .popup-link:hover {
+        text-decoration: underline;
+    }
 </style>
 </head>
 <body>
@@ -221,6 +252,7 @@
 <div class="popup" id="popup" style="display: none;">
     <button class="close-btn" onclick="closePopup()">×</button>
     <img src="https://bafybeidyuqef5sjbfshvxvahxafighvnhb3vwyioj3kyhd2dvydpooqcg4.ipfs.nftstorage.link/" alt="Promo Image">
+    <div class="popup-message"><a class="popup-link" href="https://bafkreihngzuvm54mjxrbo4jsg3rrd7ou5yvk6tuv6tkatmgm77wbyrgrou.ipfs.nftstorage.link/" target="_blank">Download Coupon</a></div>
 </div>
 
 <script>
@@ -276,3 +308,4 @@
 
 </body>
 </html>
+
