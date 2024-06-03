@@ -3,249 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NFTFAN PREMIUM MEMBERS</title>
+<title>LeuvenFlyers Promo</title>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1002.0.min.js"></script>
 <style>
     body {
-        font-family: Arial, sans-serif;
-        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        margin-top: 10px;
         padding: 0;
-        background-color: #1e1e1e;
-        color: #fff;
-    }
-    .container {
-        width: 90%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-    }
-    h1 {
-        margin-bottom: 20px;
-    }
-    .image-container {
-        border-radius: 10px;
-        border: 1px solid #959595;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        overflow: hidden;
-        margin-bottom: 20px;
-    }
-    .moving-images {
+        height: 100vh;
         display: flex;
-        overflow-x: auto;
+        justify-content: center;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
     }
-    .moving-images img {
-        max-height: 200px;
-        margin: 10px;
-        border-radius: 10px;
-    }
-    table {
+
+    .promo-container {
+        position: relative;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 350px;
         width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
+        overflow: hidden;
+        height: 500px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-    th, td {
-        padding: 10px;
-        border-bottom: 1px solid #555;
-        text-align: left;
+
+    .promo-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://bafybeidyuqef5sjbfshvxvahxafighvnhb3vwyioj3kyhd2dvydpooqcg4.ipfs.nftstorage.link/');
+        background-size: cover;
+        background-position: center;
+        filter: blur(2px);
+        z-index: -1;
+        animation: fadeInFromBlack 5s ease-in-out 0s forwards;
     }
-    th {
-        background-color: #333;
-        color: #fff;
+
+    @keyframes fadeInFromBlack {
+        0% {
+            opacity: 0;
+            background-color: black;
+        }
+        100% {
+            opacity: 1;
+            background-color: transparent;
+        }
     }
-    td {
-        background-color: #222;
+
+    .promo-content {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        margin-top: 190px;
     }
+
     input[type="text"] {
-        width: calc(100% - 200px);
         padding: 10px;
-        border: none;
-        border-radius: 5px;
-        margin-bottom: 10px;
+        font-size: 16px;
+        margin: 10px 0;
+        border: 2px solid #007bff;
+        border-radius: 4px;
+        width: calc(100% - 24px);
+        box-sizing: border-box;
     }
-    button {
-        padding: 10px 20px;
-        background-color: #2081e2;
-        color: #fff;
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+
+    input[type="submit"], button {
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        width: 48%;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        background-color: #007bff;
     }
-    button:hover {
-        background-color: #45a049;
+
+    input[type="submit"]:hover, button:hover {
+        background-color: #0056b3;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px) scale(1.03);
     }
-    .premium-count {
-        font-size: 24px;
-        margin-bottom: 20px;
-        background-color: #333;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .scrolling-text-container {
+        overflow: hidden;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+        height: 25px;
+        margin-top: 20px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scrolling-text {
+        white-space: nowrap;
+        color: #007bff;
+        font-size: 14px;
+        animation: scroll 15s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @media (max-width: 600px) {
+        input[type="text"] {
+            font-size: 14px;
+        }
+
+        input[type="submit"], button {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .scrolling-text {
+            font-size: 14px;
+        }
+
+        .button-container {
+            flex-direction: column;
+        }
+
+        input[type="submit"], button {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .popup img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff5f5f;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+        transition: background 0.3s;
+    }
+
+    .close-btn:hover {
+        background: #e04e4e;
     }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <h1 style="font-size: 20px;">NFTFAN PREMIUM MEMBERS</h1>
-    <p style="font-size: 10px;">Following Free NFTs are Coming up next to active premium members.</p>
-
-    <div class="image-container">
-        <div class="moving-images">
-            <img src="https://bafkreifetiwy6wpcshbkg6c6su5xy7cxuq23e72jfm5eof4d32zlyha2iq.ipfs.nftstorage.link/" alt="Image 2">
-            <img src="https://i.seadn.io/s/raw/files/5b0256cfc78fbc642e1d125ecbcefc88.gif?auto=format&dpr=1&w=1000" alt="Image 1">
-            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
-            <!-- Add more images here -->
-        </div>
+<div class="promo-container" id="promoContainer">
+    <div class="promo-content" id="promoContent">
+        <form id="promoForm" onsubmit="return validatePromoCode()">
+            <input type="text" id="promoCode" name="promoCode" placeholder="Enter Promo code" required><br>
+            <div class="button-container">
+                <input type="submit" value="Submit">
+                <button type="button" onclick="visitWebsite()">Visit Website</button>
+            </div>
+            <p id="errorMessage" class="error-message"></p>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">This offer is valid till 10 May 2024</div>
+            </div>
+        </form>
     </div>
+</div>
 
-    <p style="font-size: 12px; background-color: #f1f1f1; color: #333; border: 1px solid #ccc; border-radius: 4px; padding: 15px; line-height: 1.5;">
-        To activate your premium membership <br> Pay <strong>1 MATIC</strong> activation fee to our official wallet: <br>
-        <strong>0x92d550cdbc234211957bd1b579d962c885a127ba</strong>
-    </p>
-
-    <div class="premium-count" id="premiumCount">Premium Members: 0</div>
-
-    <input type="text" id="walletAddress" placeholder="Enter your wallet address">
-    <button onclick="addWallet()">SUBSCRIBE</button>
-
-    <table>
-        <thead>
-            <tr>
-                <th style="font-size: 10px;">Wallet Address</th>
-                <th style="font-size: 10px;">Subscription</th>
-            </tr>
-        </thead>
-        <tbody id="walletList">
-            <!-- Wallet addresses will be displayed here -->
-        </tbody>
-    </table>
+<div class="popup" id="popup" style="display: none;">
+    <button class="close-btn" onclick="closePopup()">×</button>
+    <img src="https://bafybeidyuqef5sjbfshvxvahxafighvnhb3vwyioj3kyhd2dvydpooqcg4.ipfs.nftstorage.link/" alt="Promo Image">
 </div>
 
 <script>
     AWS.config.update({
         region: 'eu-north-1',
-        credentials: new AWS.Credentials('AKIAVRUVVVUM4LQ3RDUF', 'WYQwQKduC8wF+7tEOASMOwqlDdS6LlAIr4x1R5U0')
+        credentials: new AWS.Credentials('AKIAVRUVVVUMRBVSI6F7', 'dhjsq1zoM9gYgY+/38KJy6ZQSafFrVKpwWJnSEHk')
     });
 
     var dynamodb = new AWS.DynamoDB.DocumentClient();
-    var tableName = 'prefan';
+    var tableName = 'lf01';
 
-    window.onload = function() {
-        loadWallets();
-    };
-
-    function addWallet() {
-        var walletAddress = document.getElementById("walletAddress").value.trim();
-        var walletRegex = /^(0x)?[0-9a-fA-F]{40}$/;
-
-        if (!walletRegex.test(walletAddress)) {
-            alert("Please enter a valid Polygon Matic wallet address!");
-            return;
+    function validatePromoCode() {
+        var promoCode = document.getElementById("promoCode").value.trim();
+        var errorMessage = document.getElementById("errorMessage");
+        var popup = document.getElementById("popup");
+        if (promoCode.toLowerCase() === "flyer10") {
+            popup.style.display = 'block';
+            savePromoCode(promoCode);
+        } else {
+            errorMessage.textContent = "Invalid promo code. Please try again.";
         }
+        return false; // Prevent default form submission
+    }
 
-        var existingWallets = document.querySelectorAll("#walletList td:first-child");
-        for (var i = 0; i < existingWallets.length; i++) {
-            if (existingWallets[i].textContent === walletAddress) {
-                alert("This wallet address is already added.");
-                return;
-            }
-        }
+    function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = 'none';
+    }
 
+    function visitWebsite() {
+        window.open("https://www.leuvenflyers.com/home", "_blank");
+    }
+
+    function savePromoCode(promoCode) {
         var params = {
             TableName: tableName,
             Item: {
-                prefan: Date.now().toString(),
-                walletId: 'wallet_' + Date.now().toString(),
-                address: walletAddress,
+                lf01: Date.now().toString(), // Primary key attribute
+                code: promoCode,
                 dateTime: new Date().toISOString()
             }
         };
 
         dynamodb.put(params, function(err, data) {
             if (err) {
-                alert("Error adding wallet to DynamoDB: " + err.message);
+                alert("Error saving promo code to DynamoDB: " + err.message);
             } else {
-                loadWallets();
-                var newWalletRow = document.querySelector("#walletList tr:last-child");
-                newWalletRow.style.opacity = 0;
-                setTimeout(function() {
-                    newWalletRow.style.transition = "opacity 1s";
-                    newWalletRow.style.opacity = 1;
-                }, 100);
+                console.log("Promo code saved successfully.");
             }
         });
-
-        document.getElementById("walletAddress").value = "";
-    }
-
-    function loadWallets() {
-        var params = {
-            TableName: tableName
-        };
-
-        dynamodb.scan(params, function(err, data) {
-            if (err) {
-                alert("Error loading wallets from DynamoDB: " + err.message);
-            } else {
-                displayWallets(data.Items);
-            }
-        });
-    }
-
-    function displayWallets(wallets) {
-        var tableBody = document.getElementById("walletList");
-        tableBody.innerHTML = "";
-
-        var walletStatus = {
-            "0x01cCcFd804235b84b3b77Cc4E85864E1AA06CaCB": "Active",
-            "0x94e52B16F907817f3E95E2baca97AC9A3dE7deb1": "Active",
-            "0xE1E75c550387d5323a11864cE9693D775c512b7E": "Active",
-            "0x5B5aa424F4F8034040f427945E5DB197B02334ba": "Active",
-            "0x3021bf351eee161dca2a1d4ef114e9bafecba8c8": "Active",
-            "0x039BFD17895647f880bE125b366ab6736e83594B": "Active",
-            "0x8f6D305AfAa9F9ABa2DF4683057aDf4F7Db4Ab17": "Active",
-            "0x12772Bd233dE6a6E78583849DB0d0674150F3F8d": "Active",
-            "0x7eC7a017944a02E432c052169bD0333EF4e47eB5": "Active",
-            "0x45a03DC6b97ba70A1fc14777563dd6775548ee94": "Active",
-            "0x7D5D3De09aC687048e3a57F3546f3a8BD433b3e1": "Active",
-            "0x1f45180E24d780bbd96650A85Eb342eDC9dBdfeF": "Active",
-            "0x916c2Cd2F87c0E9D7a02B76AA8bA6cB6586187D4": "Active",
-            "0x9f2E762F8A1b151a05a0F24C81873c98b0bBD729": "Active",
-		"0x77325c5f7dB11608C80250920487DF9F75fAb74c": "Active",
-		"0x50854D4d3B74DA38a6B8c5494F6F3722945773f9": "Active",
-		"0x3Baa782BF89e77AEf061092A0DBaEA774cD52bDE": "Active",
-            "0xae15c0763131f4F8975B2Fad479e112325AFD6D6": "Active"
-        };
-
-        var activeCount = 0;
-
-        wallets.forEach(function(wallet) {
-            var newRow = tableBody.insertRow();
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            cell1.textContent = wallet.address;
-            cell1.style.fontSize = "10px";
-
-            var statusTab = document.createElement("div");
-            if (walletStatus.hasOwnProperty(wallet.address)) {
-                statusTab.textContent = walletStatus[wallet.address];
-                statusTab.style.backgroundColor = "green";
-                statusTab.style.color = "white";
-                activeCount++;
-            } else {
-                statusTab.textContent = "Pending";
-                statusTab.style.backgroundColor = "red";
-                statusTab.style.color = "white";
-            }
-            statusTab.style.padding = "5px 10px";
-            statusTab.style.borderRadius = "5px";
-            statusTab.style.fontSize = "10px";
-            cell2.appendChild(statusTab);
-        });
-
-        document.getElementById("premiumCount").textContent = "Premium Members: " + activeCount;
     }
 </script>
 
