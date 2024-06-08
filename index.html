@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LeuvenFlyers Promo</title>
@@ -38,30 +39,36 @@
         background-image: url('https://bafybeidyuqef5sjbfshvxvahxafighvnhb3vwyioj3kyhd2dvydpooqcg4.ipfs.nftstorage.link/');
         background-size: cover;
         background-position: center;
-        filter: blur(2px);
+        filter: blur(1px);
         z-index: -1;
-        animation: fadeInFromBlack 5s ease-in-out 0s forwards;
+       
     }
 
-    @keyframes fadeInFromBlack {
-        0% {
-            opacity: 0;
-            background-color: black;
-        }
-        100% {
-            opacity: 1;
-            background-color: transparent;
-        }
-    }
+    
 
     .promo-content {
         position: relative;
         z-index: 1;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 2);
         border-radius: 12px;
         margin-top: 120px;
     }
+
+.promo-text {
+    font-size: 12px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); /* gradient background */
+    padding: 10px; /* add padding for space around text */
+    border-radius: 8px; /* round the corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+    text-align: center; /* center-align the text */
+    font-family: 'Poppins', sans-serif; /* change font to Poppins */
+}
+
+
 
     input[type="text"] {
         padding: 10px;
@@ -265,6 +272,7 @@
 
 <div class="promo-container" id="promoContainer">
     <div class="promo-content" id="promoContent">
+        <div class="promo-text">Enjoy a Free Bubble Tea with Promo Code</div>
         <form id="promoForm" onsubmit="return validatePromoCode()">
             <input type="text" id="promoCode" name="promoCode" placeholder="Enter Promo code" required><br>
             <div class="button-container">
@@ -349,5 +357,3 @@
 
 </body>
 </html>
-
-
