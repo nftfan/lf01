@@ -60,7 +60,7 @@
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.9);
         border-radius: 12px;
-        margin-top: 190px;
+        margin-top: 140px;
     }
 
     input[type="text"] {
@@ -229,6 +229,36 @@
     .popup-link:hover {
         text-decoration: underline;
     }
+
+    .share-button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #ee5ea1;
+        transition: all 0.3s ease;
+    }
+
+    .share-button:hover {
+        background-color: #0056b3;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px) scale(1.03);
+    }
+
+    .share-message {
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745;
+        border-radius: 8px;
+        display: none;
+    }
 </style>
 </head>
 <body>
@@ -245,6 +275,8 @@
             <div class="scrolling-text-container">
                 <div class="scrolling-text">This offer is valid till 10 May 2024</div>
             </div>
+            <button class="share-button" type="button" onclick="sharePromo()">Copy Link</button>
+            <div class="share-message" id="shareMessage">Link copied</div>
         </form>
     </div>
 </div>
@@ -286,6 +318,15 @@
         window.open("https://www.leuvenflyers.com/home", "_blank");
     }
 
+    function sharePromo() {
+        const shareMessage = document.getElementById("shareMessage");
+        navigator.clipboard.writeText("https://nftfan.github.io/lf01/").then(() => {
+            shareMessage.style.display = 'block';
+        }).catch((error) => {
+            console.error('Error copying link:', error);
+        });
+    }
+
     function savePromoCode(promoCode) {
         var params = {
             TableName: tableName,
@@ -308,4 +349,5 @@
 
 </body>
 </html>
+
 
